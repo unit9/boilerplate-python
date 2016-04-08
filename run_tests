@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+PY_FILES=$(find . -type f -name "*.py")
+
+python -m pep8 $PY_FILES
+python -m pylint -E .
