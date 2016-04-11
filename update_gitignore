@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+environment=python,linux,osx,windows
+exec curl -sS "https://www.gitignore.io/api/$environment" > .gitignore

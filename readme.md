@@ -51,6 +51,18 @@ default to `127.0.0.1` and `5000` respectively.
 
 Press Control-C to stop the server.
 
+### Managing `.gitignore`
+
+The `.gitignore` file is managed with the help of
+<https://www.gitignore.io/>. It uses a simple list hinting at your
+tech stack. It includes Python, OS X, Linux and Windows by default. If
+you use a particular IDE or some other piece of tooling that may leave
+some trash behind, you should check if `gitignore.io` supports it.
+
+Edit the file [`update_gitignore`](/update_gitignore); change the
+value of `$environment` to a comma-separated list describing your tech
+stack; refer to `gitignore.io` for help.
+
 ## Acknowledgements
 
 - Kamil Cholewiński <kamil@unit9.com>
