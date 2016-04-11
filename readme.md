@@ -49,6 +49,11 @@ You should run:
 You can override the environment variables `HOST` and `PORT`, which
 default to `127.0.0.1` and `5000` respectively.
 
+Visit <http://localhost:5000/> to see the website in development.
+
+When you save a Python source file, the dev server will automatically
+pick up that change and reload the code.
+
 Press Control-C to stop the server.
 
 ## Acknowledgements
