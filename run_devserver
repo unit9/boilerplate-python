@@ -1,0 +1,3 @@
+#!/usr/bin/env python
+print("We're terribly sorry, but the devserver hasn't been implemented yet.")
+exit(1)
