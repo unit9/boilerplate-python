@@ -44,6 +44,7 @@ import logging
 HOST = os.environ.get("HOST", "127.0.0.1")
 PORT = int(os.environ.get("PORT", "5000"))
 
+DEBUG = int(os.environ.get("DEBUG", "0"))
 TESTING = int(os.environ.get("TESTING", "0"))
 LOGLEVEL = os.environ.get("LOGLEVEL", "INFO").upper()
 
