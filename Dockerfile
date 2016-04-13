@@ -16,7 +16,7 @@ run pip install -r ./requirements.txt
 
 # Configure and expose uWSGI
 run adduser --system --no-create-home --disabled-login --group app
-add run_production /etc/service/backend/run
+add config/run_production /etc/service/backend/run
 
 # Slurp application code
 add . /app

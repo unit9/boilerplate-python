@@ -91,8 +91,8 @@ The included [`Dockerfile`](/Dockerfile), based on
 [`unit9/base`](https://hub.docker.com/r/unit9/base/), includes
 everything you need to get started.
 
-The script [`run_production`](/run_production) is copied into the
-image, and runs (via [runit](http://smarden.org/runit/)) a uWSGI
+The script [`run_production`](/config/run_production) is copied into
+the image, and runs (via [runit](http://smarden.org/runit/)) a uWSGI
 master process with a bunch of workers, under an unprivileged account.
 
 When using the bundled script and/or `Dockerfile`, you can override
