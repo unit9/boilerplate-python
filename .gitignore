@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/python,linux,osx,windows
+# Created by https://www.gitignore.io/api/python,linux,osx,windows,vagrant
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -151,4 +151,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+### Vagrant ###
+.vagrant/
 
