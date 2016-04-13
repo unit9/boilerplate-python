@@ -68,6 +68,57 @@ Edit the file [`update_gitignore`](/update_gitignore); change the
 value of `$environment` to a comma-separated list describing your tech
 stack; refer to `gitignore.io` for help.
 
+### Running in production
+
+#### The Stack
+
+You will at least need to understand how WSGI works: spec for
+[Python 2.x](https://www.python.org/dev/peps/pep-0333/),
+[Python 3.x](https://www.python.org/dev/peps/pep-3333/),
+[some explaining on SO](http://stackoverflow.com/a/9664122).
+
+Currently, one of the best ways to run WSGI apps in production is
+[uWSGI](https://uwsgi-docs.readthedocs.org/).
+
+It is also recommended to use [Docker](https://www.docker.com/).
+
+#### The App
+
+Read [`settings.py`](/settings.py) to understand which runtime
+parameters you can control.
+
+The included [`Dockerfile`](/Dockerfile), based on
+[`unit9/base`](https://hub.docker.com/r/unit9/base/), includes
+everything you need to get started.
+
+The script [`run_production`](/run_production) is copied into the
+image, and runs (via [runit](http://smarden.org/runit/)) a uWSGI
+master process with a bunch of workers, under an unprivileged account.
+
+When using the bundled script and/or `Dockerfile`, you can override
+any of these environment variables:
+
+- `PORT`, where uWSGI will listen (default: `5000`)
+- `UWSGI_PROCESSES`, adjust number of uWSGI processes (default: 2),
+  best if you can match the number of physical CPUs on the host
+- `UWSGI_THREADS`, number of threads per uWSGI process (default: 32)
+- And anything else, as defined in [`settings.py`](/settings.py)!
+
+Note that for security reasons, `DEBUG` and `TESTING` are hardcoded to
+`0`; change the run script if you absolutely must.
+
+#### Building the image
+
+Be smart. Don't do this by hand. Use a CI service, e.g. Shippable.
+
+    docker build -t my_app_image .
+
+#### Running the image
+
+Be smart. Don't do this by hand. Use automation tools, e.g. Ansible.
+
+    docker run --rm -ti -e PORT=8080 -e UWSGI_PROCESSES=4 -p 80:8080 --name myapp my_app_image
+
 ## Acknowledgements
 
 - Kamil Cholewiński <kamil@unit9.com>
