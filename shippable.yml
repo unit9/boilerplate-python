@@ -1,0 +1,23 @@
+language: python
+build_image: shippableimages/ubuntu1404_python
+python:
+- 2.7
+
+before_install:
+- sudo apt-get update
+- sudo apt-get install --yes --no-install-recommends
+        git-core
+        python-pip
+        python-wheel
+- sudo pip install -r ./requirements-dev.txt
+- sudo pip install -r ./requirements.txt
+
+before_script:
+- mkdir -p shippable/testresults
+- mkdir -p shippable/codecoverage
+
+script:
+- ./run_tests
+
+# after_success:
+# - ./some_magic_command
