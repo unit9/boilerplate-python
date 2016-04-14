@@ -1,2 +1,2 @@
-from backend import main
-main()
+from backend import main  # pragma: nocover
+main()  # pragma: nocover
