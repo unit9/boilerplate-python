@@ -13,7 +13,7 @@ cleanup() {
 trap cleanup EXIT
 
 python -m pep8 $PY_FILES
-python -m pylint -E .
+python -m pylint -E backend
 python -m pytest \
        --junitxml ./shippable/testresults/pytest.xml \
        --cov=backend \
