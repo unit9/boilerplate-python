@@ -3,7 +3,7 @@ set -eu
 
 PY_FILES=$(find . -type f -name "*.py")
 
-rm -r ./shippable
+rm -rf ./shippable
 mkdir -p ./shippable/testresults ./shippable/codecoverage
 
 cleanup() {
