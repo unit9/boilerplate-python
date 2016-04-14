@@ -1,4 +1,8 @@
 #!/bin/sh
 set -eu
 environment=python,linux,osx,windows,vagrant
-exec curl -sS "https://www.gitignore.io/api/$environment" > .gitignore
+curl -sS "https://www.gitignore.io/api/$environment" > .gitignore
+cat >> .gitignore <<EOF
+### Local rules, see $(basename $0) to override! ###
+shippable
+EOF

@@ -3,5 +3,23 @@ set -eu
 
 PY_FILES=$(find . -type f -name "*.py")
 
+rm -rf ./shippable
+mkdir -p ./shippable/testresults ./shippable/codecoverage
+
 python -m pep8 $PY_FILES
 python -m pylint -E .
+python -m nose \
+    --all-modules \
+    --verbosity=2 \
+    --detailed-errors \
+    --with-coverage \
+    --cover-erase \
+    --cover-inclusive \
+    --cover-branches \
+    --cover-package=backend \
+    --cover-xml \
+    --cover-xml-file=./shippable/codecoverage/nose.xml \
+    --logging-level=DEBUG \
+    --with-xunit \
+    --xunit-file=./shippable/testresults/nose.xml \
+    backend
