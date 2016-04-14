@@ -4,6 +4,11 @@ import whitenoise
 from flask_sqlalchemy import SQLAlchemy
 
 import settings
+from .hacks import install_hacks
+
+
+# Apply any required hacks/workarounds
+install_hacks()
 
 
 # Initialise app and config
