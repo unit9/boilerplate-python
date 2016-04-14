@@ -22,7 +22,7 @@ def app():
 @pytest.fixture(scope="function")
 def db(request):
     if not real_app.config["SQLALCHEMY_DATABASE_URI"]:
-        pytest.skip("Database not configured")
+        pytest.skip("Database not configured")  # pragma: nocover
 
     ctx = real_app.app_context()
 

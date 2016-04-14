@@ -1,4 +1,4 @@
-def hack_psycopg2cffi():
+def hack_psycopg2cffi():  # pragma: nocover
     try:
         from psycopg2cffi import compat
     except ImportError:
