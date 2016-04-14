@@ -17,7 +17,7 @@ def index():
     return flask.send_file("../website/index.html")
 
 
-def main():
+def main():  # pragma: nocover
     from werkzeug.serving import run_simple
     run_simple(
         settings.HOST,
@@ -28,5 +28,5 @@ def main():
     )
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: nocover
     main()

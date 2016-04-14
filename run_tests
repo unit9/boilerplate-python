@@ -3,6 +3,20 @@ set -eu
 
 PY_FILES=$(find . -type f -name "*.py")
 
+rm -r ./shippable
+mkdir -p ./shippable/testresults ./shippable/codecoverage
+
+cleanup() {
+    [ -f ./coverage.xml ] && mv ./coverage.xml ./shippable/codecoverage
+}
+
+trap cleanup EXIT
+
 python -m pep8 $PY_FILES
 python -m pylint -E .
-python -m pytest --junitxml ./shippable/testresults/pytest.xml
+python -m pytest \
+       --junitxml ./shippable/testresults/pytest.xml \
+       --cov=backend \
+       --cov-report term \
+       --cov-report xml \
+       --cov-fail-under=80
