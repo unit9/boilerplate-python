@@ -156,3 +156,5 @@ $RECYCLE.BIN/
 ### Vagrant ###
 .vagrant/
 
+### Local rules, see update_gitignore to override! ###
+shippable
