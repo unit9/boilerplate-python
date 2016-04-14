@@ -41,12 +41,18 @@ import os
 import logging
 
 
+# Local development server
 HOST = os.environ.get("HOST", "127.0.0.1")
 PORT = int(os.environ.get("PORT", "5000"))
 
+# Logging, debugging
 DEBUG = int(os.environ.get("DEBUG", "0"))
 TESTING = int(os.environ.get("TESTING", "0"))
 LOGLEVEL = os.environ.get("LOGLEVEL", "INFO").upper()
+
+# Database-related; http://flask-sqlalchemy.pocoo.org/latest/config/
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI", "")
 
 
 # Avoid changing things below this line, unless necessary.

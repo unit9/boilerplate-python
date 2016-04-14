@@ -1,0 +1,4 @@
+[TYPECHECK]
+generated-members=query
+ignored-modules=flask_sqlalchemy
+ignored-classes=scoped_session

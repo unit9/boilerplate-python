@@ -22,6 +22,9 @@ dpkg --configure -a
 apt-get update
 apt-get install --yes --no-install-recommends \
         git-core \
+        libffi-dev \
+        libpq-dev \
+        python-dev \
         python-pip \
         python-wheel \
         && true
