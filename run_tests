@@ -18,5 +18,4 @@ python -m pytest \
        --junitxml ./shippable/testresults/pytest.xml \
        --cov=backend \
        --cov-report term \
-       --cov-report xml \
-       --cov-fail-under=80
+       --cov-report xml
