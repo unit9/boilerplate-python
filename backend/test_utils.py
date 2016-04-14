@@ -27,12 +27,15 @@ def db(request):
     ctx = real_app.app_context()
 
     def fin():
+        real_db.session.close_all()
         real_db.drop_all()
         # This is a bit of a hack, since we can't use `with`
         ctx.__exit__(None, None, None)
 
     ctx.__enter__()
     request.addfinalizer(fin)
+    real_db.session.close_all()
+    real_db.drop_all()
     real_db.create_all()
     return real_db
 
