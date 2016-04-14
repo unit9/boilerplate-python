@@ -18,7 +18,7 @@ python -m nose \
     --cover-branches \
     --cover-package=backend \
     --cover-xml \
-    --cover-xml-file=./shippable/codecoverage/nose.xml \
+    --cover-xml-file=./shippable/codecoverage/coverage.xml \
     --logging-level=DEBUG \
     --with-xunit \
     --xunit-file=./shippable/testresults/nose.xml \
