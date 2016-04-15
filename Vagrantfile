@@ -7,6 +7,9 @@ Vagrant.require_version ">= 1.6"
 $script = <<-EOF
 cd /vagrant
 ./cmd/provision_local
+if ! grep -q PYTHONPATH /home/vagrant/.bashrc
+then echo 'export PYTHONPATH=.' >> /home/vagrant/.bashrc
+fi
 EOF
 
 Vagrant.configure("2") do |config|
