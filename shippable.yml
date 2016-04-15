@@ -17,9 +17,6 @@ build:
   ci:
   - ./cmd/provision_local
 
-  - service postgresql start
-  - psql -c "create database test;" -U postgres
-
   - ./run_tests
 
   # post_ci:

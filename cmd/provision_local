@@ -24,6 +24,7 @@ apt-get install --yes --no-install-recommends \
         git-core \
         libffi-dev \
         libpq-dev \
+        postgresql-9.4 \
         python-dev \
         python-pip \
         python-wheel \
@@ -34,3 +35,18 @@ git status
 
 pip install -r ./requirements-dev.txt
 pip install -r ./requirements.txt
+
+# Bring up postgres, create databases for local dev and testing
+cat > /etc/postgresql/9.4/main/pg_hba.conf <<EOF
+local   all             postgres                                trust
+host    all             postgres        127.0.0.1/32            trust
+host    all             postgres        ::1/128                 trust
+EOF
+service postgresql restart
+psql -U postgres -Atc 'select 1;'
+./cmd/db_create local
+./cmd/db_create test
+# Create tables for the local dev environment
+export PYTHONPATH=.
+export SQLALCHEMY_DATABASE_URI="postgresql://postgres@localhost/local"
+./cmd/db_create_tables
