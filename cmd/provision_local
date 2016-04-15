@@ -29,8 +29,8 @@ apt-get install --yes --no-install-recommends \
         python-wheel \
         && true
 
-cd /vagrant
 git show -s HEAD
 git status
 
+pip install -r ./requirements-dev.txt
 pip install -r ./requirements.txt

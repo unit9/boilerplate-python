@@ -19,18 +19,7 @@ build:
     options: ""
 
   ci:
-  - id
-  - apt-get update
-  - apt-get install --yes --no-install-recommends
-        git-core
-        libffi-dev
-        libpq-dev
-        python-dev
-        python-pip
-        python-wheel
-
-  - pip install -r ./requirements-dev.txt
-  - pip install -r ./requirements.txt
+  - ./cmd/provision_local
 
   - service postgresql start
   - psql -c "create database test;" -U postgres
