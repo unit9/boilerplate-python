@@ -54,6 +54,8 @@ LOGLEVEL = os.environ.get("LOGLEVEL", "INFO").upper()
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI", "")
 
+# Sentry
+SENTRY_DSN = os.environ.get("SENTRY_DSN", "")
 
 # Avoid changing things below this line, unless necessary.
 

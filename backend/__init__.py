@@ -3,6 +3,7 @@ import whitenoise
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from raven.contrib.flask import Sentry
 
 import settings
 from .hacks import install_hacks
@@ -29,6 +30,11 @@ application = whitenoise.WhiteNoise(
 db = SQLAlchemy()
 db.init_app(app)
 migrate = Migrate(app, db)
+
+
+# Sentry
+sentry = Sentry()
+sentry.init_app(app, app.config["SENTRY_DSN"])
 
 
 # Common routes
