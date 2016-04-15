@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+database=$1; shift
+. ./cmd/db_vars
+if psql -Atc "select datname from pg_database" |\
+        grep -qx $database
+then
+    echo "Database '$database' already exists"
+else
+    psql -c "create database $database;"
+    echo "Database '$database' created"
+fi
