@@ -1,19 +1,32 @@
 language: python
-build_image: shippableimages/ubuntu1404_python
+
 python:
 - 2.7
 
-before_install:
-- sudo apt-get update
-- sudo apt-get install --yes --no-install-recommends
-        git-core
-        python-pip
-        python-wheel
-- sudo pip install -r ./requirements-dev.txt
-- sudo pip install -r ./requirements.txt
+build:
 
-script:
-- ./run_tests
+  # pre_ci:
+  # - docker build -t myImage:tip .
 
-# after_success:
-# - ./some_magic_command
+  pre_ci_boot:
+    image_name: drydock/u14pytall
+    image_tag: prod
+    pull: true
+    options: ""
+
+  ci:
+  - ./cmd/provision_local
+
+  - ./run_tests
+
+  # post_ci:
+  # - docker build -t eu.gcr.io/u9docker/boilerplate .
+  # - docker push eu.gcr.io/u9docker/boilerplate
+
+# integrations:
+#   hub:
+#   - integrationName: u9docker
+#     type: gcr
+#     branches:
+#       only:
+#       - master

@@ -1,0 +1,4 @@
+export PGUSER=${PGUSER:-postgres}
+export PGPASSWORD=${PGPASSWORD:-}
+export PGHOST=${PGHOST:-localhost}
+export PGPORT=${PGPORT:-5432}

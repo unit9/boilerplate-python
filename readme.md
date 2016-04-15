@@ -16,7 +16,20 @@ issues and features.
 3. Edit this readme and include references to your project
 4. Commit!
 
+## Quick start
+
+1. `vagrant up`
+2. `vagrant ssh`
+3. `cd /vagrant`
+4. `./run_devserver`
+5. <http://localhost:5000>
+
 ### Installing dependencies
+
+If you don't need a particular dependency, feel free to delete the
+relevant code / integration.
+
+#### Python
 
 For development:
 
@@ -28,17 +41,55 @@ For development and production:
 
 Apply `virtualenv`, various flags, etc as fit for your environment.
 
+#### PostgreSQL
+
+You have two options:
+
+- (Easy) use Vagrant (`vagrant up`, `vagrant ssh`) as your dev
+  environment.
+- (Expert) Set things up by hand:
+    - Install and run a local PostgreSQL server, version 9.4, either
+      from your operating system's packages/ports, or via
+      [Docker](https://hub.docker.com/_/postgres/);
+    - Set the `SQLALCHEMY_DATABASE_URI` environment variable (see
+      "Configuration" below);
+    - Use provided scripts in [`cmd`](/cmd) (`db_create`,
+      `db_create_tables`).
+
 ### Running tests
 
 You should run:
 
     ./run_tests
 
+If external services, such as database, are not available, some of the
+tests will be automatically skipped.
+
 ### Configuration
 
 Read carefully the contents of the file [`settings.py`](/settings.py),
 everything is explained in great detail. In short, you need to set a
 bunch of environment variables.
+
+#### PostgreSQL
+
+You should define `SQLALCHEMY_DATABASE_URI` as follows:
+
+    postgresql://user:password@host:port/database
+
+- `:port` defaults to 5432; `:password` can be omitted if none is set.
+- For CI builds / testing: `postgresql://postgres@localhost/test`
+
+    This is the default in `run_tests`, if not defined.
+
+- For Vagrant / local dev:  `postgresql://postgres@localhost/local`
+
+    This is the default in `run_devserver`, if not defined.
+
+- For production, it's sysop's job to figure it out!
+
+    Amazon's [RDS](https://aws.amazon.com/rds/) managed database
+    service works extremelly well.
 
 ### Running in development
 
