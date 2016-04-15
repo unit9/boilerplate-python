@@ -3,10 +3,6 @@ language: python
 python:
 - 2.7
 
-env:
-  global:
-  - SQLALCHEMY_DATABASE_URI="postgresql://postgres@localhost/test"
-
 build:
 
   # pre_ci:
