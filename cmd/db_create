@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from backend import app, db
+from backend import app, db, models
 
 
 with app.app_context():
