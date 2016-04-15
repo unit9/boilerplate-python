@@ -14,6 +14,7 @@ import json
 from flask import Flask, current_app
 from flask.ext.script import Manager
 from flask.ext.script.commands import ShowUrls, Clean
+from flask.ext.migrate import MigrateCommand
 
 from backend import app
 
@@ -30,6 +31,7 @@ def dumpconfig():
 
 manager.add_command("urls", ShowUrls())
 manager.add_command("clean", Clean())
+manager.add_command("db", MigrateCommand)
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@ import flask
 import whitenoise
 
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 import settings
 from .hacks import install_hacks
@@ -27,6 +28,7 @@ application = whitenoise.WhiteNoise(
 # Database
 db = SQLAlchemy()
 db.init_app(app)
+migrate = Migrate(app, db)
 
 
 # Common routes
