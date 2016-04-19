@@ -170,6 +170,15 @@ Be smart. Don't do this by hand. Use automation tools, e.g. Ansible.
 
     docker run --rm -ti -e PORT=8080 -e UWSGI_PROCESSES=4 -p 80:8080 --name myapp my_app_image
 
+#### Database migrations
+
+The tool used for database migrations is [Alembic][]; it is wrapped in
+a script, [`manage.py`](/manage.py). The most important command is:
+
+    ./manage.py db migrate
+
+[Alembic]: https://alembic.readthedocs.org/
+
 ## Acknowledgements
 
 - Kamil Cholewiński <kamil@unit9.com>
