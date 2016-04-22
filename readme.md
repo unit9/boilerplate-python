@@ -107,6 +107,17 @@ pick up that change and reload the code.
 
 Press Control-C to stop the server.
 
+#### Sentry
+
+Do yourself a favor and get yourself a
+[Sentry](https://www.getsentry.com/). Hosted Sentry is great; UNIT9
+has an account, ask to get access.
+
+For development / production servers, set the configuration variable
+`SENTRY_DSN`. Don't do this for local development or unit testing,
+someone else on the team may try to kill you for all your typos and
+alert spam...
+
 ### Managing `.gitignore`
 
 The `.gitignore` file is managed with the help of
