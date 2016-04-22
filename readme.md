@@ -190,6 +190,12 @@ a script, [`manage.py`](/manage.py). The most important command is:
 
 [Alembic]: https://alembic.readthedocs.org/
 
+#### Browsers blacklisting
+
+We provide you with basic browsers blacklisting so you can exclude specific browser from accessing your application.
+For now, route "/" has simple User-agent checking against blacklisted ones.
+You can edit [browsers.yml](/browsers.yml) and adapt it to your needs.
+
 ## Acknowledgements
 
 - Kamil Cholewiński <kamil@unit9.com>

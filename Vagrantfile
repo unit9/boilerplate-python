@@ -10,6 +10,9 @@ cd /vagrant
 if ! grep -q PYTHONPATH /home/vagrant/.bashrc
 then echo 'export PYTHONPATH=.' >> /home/vagrant/.bashrc
 fi
+if ! grep -q HOST /home/vagrant/.bashrc
+then echo 'export HOST=0.0.0.0' >> /home/vagrant/.bashrc
+fi
 EOF
 
 Vagrant.configure("2") do |config|

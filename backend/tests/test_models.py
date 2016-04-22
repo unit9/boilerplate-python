@@ -1,6 +1,5 @@
-from .test_utils import *
-
-from .models import User
+from backend.models import User
+from backend.tests.test_utils import db
 
 
 def test_create_user(db):

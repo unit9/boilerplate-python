@@ -2,7 +2,8 @@ import json
 import logging
 import pytest
 
-from . import app as real_app, db as real_db
+from backend import app as real_app
+from backend import db as real_db
 
 
 __all__ = [
