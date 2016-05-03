@@ -1,9 +1,11 @@
+import os
 import flask
 from flask import Blueprint
 
 from backend.utils import ua
 
-view_handler = Blueprint('views', __name__)
+
+view_handler = Blueprint("views", __name__)
 
 
 @view_handler.route("/")
@@ -13,4 +15,4 @@ def index():
         site = "index.html"
     else:
         site = "unsupported.html"
-    return flask.send_file("../website/{}".format(site))
+    return flask.send_file(os.path.join("../website", site))
