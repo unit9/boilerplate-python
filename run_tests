@@ -18,7 +18,9 @@ python -m pep8 $PY_FILES
 python -m pylint -E backend
 python -m pytest \
        --junitxml ./shippable/testresults/pytest.xml \
+       --doctest-modules \
        --cov=backend \
        --cov-report term \
        --cov-report xml \
-       --cov-report html
+       --cov-report html \
+       --pyargs backend
