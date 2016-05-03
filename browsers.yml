@@ -1,22 +1,30 @@
+# Define your browser blacklists here.
+
 blacklist:
 
 - browser:
     family: Safari
-    # you can specify from which version browsers' family should be blacklisted
-    # use operators eq, ge, gt, le, lt as in example below
-    # number in brackets points a version number
+    # This is some weird syntax! YAML doesn't have a native tuple
+    # type, and this is how Python represents and compares versions.
+    # So to ban all Safari versions prior to 8.0, say this:
     version__lt: !!python/tuple [8]
-
-# some other examples
+    # If you needed to ban everything prior to 8.1, you'd say:
+    # version__lt: !!python/tuple [8, 1]
 
 - browser:
+    # Match everything that introduces itself as Opera, regardless of
+    # version
     family: Opera
 
 - browser:
+    # "Safari" and "Mobile Safari" are distinct.
     family: Mobile Safari
     version__lt: !!python/tuple [9]
 
-- browser:
+- os:
+    # You can match other things than just the browser, e.g. the OS:
+    family: Windows
+  browser:
     family: IE
     version__lt: !!python/tuple [11]
 

@@ -130,6 +130,22 @@ Edit the file [`update_gitignore`](/update_gitignore); change the
 value of `$environment` to a comma-separated list describing your tech
 stack; refer to `gitignore.io` for help.
 
+### Other goodies / bultin functionality
+
+#### Browser blacklisting
+
+There's a basic browser detection / blacklisting feature, which
+handles a common requirement on many projects.
+
+It can be used to serve an "unsupported browser" page for browsers /
+devices that are explicitly blacklisted in the Technical Specification
+and/or Statement of Work.
+
+Use the `backend.utils.ua.is_supported` function to match the user
+agent (this is already done for the landing page handler).
+
+You can edit [`browsers.yml`](/browsers.yml) to tweak the blacklist.
+
 ### Running in production
 
 #### The Stack
@@ -189,12 +205,6 @@ a script, [`manage.py`](/manage.py). The most important command is:
     ./manage.py db migrate
 
 [Alembic]: https://alembic.readthedocs.org/
-
-#### Browsers blacklisting
-
-We provide you with basic browsers blacklisting so you can exclude specific browser from accessing your application.
-For now, route "/" has simple User-agent checking against blacklisted ones.
-You can edit [browsers.yml](/browsers.yml) and adapt it to your needs.
 
 ## Acknowledgements
 
