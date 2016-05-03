@@ -6,7 +6,8 @@ from flask_migrate import Migrate
 from raven.contrib.flask import Sentry
 
 import settings
-from .hacks import install_hacks
+from backend.views import view_handler
+from backend.utils.hacks import install_hacks
 
 
 # Apply any required hacks/workarounds
@@ -37,10 +38,8 @@ sentry = Sentry()
 sentry.init_app(app, app.config["SENTRY_DSN"])
 
 
-# Common routes
-@app.route("/")
-def index():
-    return flask.send_file("../website/index.html")
+# Register views
+app.register_blueprint(view_handler)
 
 
 # Meta

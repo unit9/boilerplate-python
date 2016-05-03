@@ -1,2 +1,3 @@
-from backend import main  # pragma: nocover
-main()  # pragma: nocover
+if __name__ == "__main__":  # pragma: nocover
+    from backend import main
+    main()
