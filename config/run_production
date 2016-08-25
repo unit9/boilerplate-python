@@ -10,4 +10,4 @@ exec chpst -u app   \
      --processes ${UWSGI_PROCESSES:-2} \
      --threads ${UWSGI_THREADS:-32}    \
      --module backend \
-     --callable app
+     --callable application
