@@ -160,3 +160,4 @@ $RECYCLE.BIN/
 .vagrant/
 ### Local rules, see .gitignore.tail to override! ###
 shippable
+/.git
