@@ -128,7 +128,13 @@ some trash behind, you should check if `gitignore.io` supports it.
 
 Edit the file [`update_gitignore`](/update_gitignore); change the
 value of `$environment` to a comma-separated list describing your tech
-stack; refer to `gitignore.io` for help.
+stack; refer to <https://www.gitignore.io/> for help. 
+
+If `gitignore.io` does not get the job done, you can also edit
+[`.gitignore.tail`](/.gitignore.tail). The contents of the file will
+be appended at the bottom of the generated `.gitignore`. 
+
+Run `./update_gitignore` when done tweaking.
 
 ### Other goodies / bultin functionality
 
