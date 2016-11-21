@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version "< 1.7"
+Vagrant.require_version "< 1.9"
 Vagrant.require_version ">= 1.6"
 
 $script = <<-EOF
