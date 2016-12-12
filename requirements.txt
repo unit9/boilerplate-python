@@ -8,8 +8,9 @@ PyYAML==3.11
 SQLAlchemy==1.0.12
 Werkzeug==0.11.5
 alembic==0.8.6
+# https://github.com/evansd/whitenoise/pull/83
+git+git://github.com/bu2/whitenoise.git@0a8eb23860869ef8c244606cdd7112cc1aa6dcf5#egg=whitenoise
 itsdangerous==0.24
 psycopg2cffi==2.7.2
 raven[flask]==5.12.0
 user-agents==1.0.1
-whitenoise==3.0
