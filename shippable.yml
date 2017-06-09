@@ -12,11 +12,11 @@ build:
     options: ""
 
   ci:
-  - docker build -t eu.gcr.io/u9docker/boilerplate .
-  - docker run --rm eu.gcr.io/u9docker/boilerplate ./run_tests
+  - docker build -t eu.gcr.io/u9spacedock/boilerplate .
+  - docker run --rm eu.gcr.io/u9spacedock/boilerplate ./run_tests
 
   # post_ci:
-  # - docker push eu.gcr.io/u9docker/boilerplate
+  # - docker push eu.gcr.io/u9spacedock/boilerplate
 
 # integrations:
 #   hub:
