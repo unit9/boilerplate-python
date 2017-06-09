@@ -1,23 +1,29 @@
-FROM unit9/base:latest
+FROM unit9/web-py27:latest
 MAINTAINER ChangeMe <change.me@example.com>
 
 # Dependencies
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive \
     apt-get install --yes --no-install-recommends \
-        python-pip \
-        python-wheel \
-        uwsgi-plugin-python \
+        build-essential \
+        git \
+        libffi-dev \
+        libyaml-dev \
     && rm -rf /var/cache/apt
 
 # Install app requirements
-WORKDIR /app
-ADD requirements.txt /app
-RUN pip install -r ./requirements.txt
+ADD requirements-lock.txt /app
+RUN pip install -r ./requirements-lock.txt \
+    && echo "Outdated requirements:" \
+    && pip list --outdated --format=columns
 
 # Configure and expose uWSGI
-RUN adduser --system --no-create-home --disabled-login --group app
-ADD config/run_production /etc/service/backend/run
+ENV PORT=5000 \
+    PYTHON_MODULE=backend \
+    PYTHON_CALLABLE=application \
+    UWSGI_PROCESSES=2 \
+    UWSGI_THREADS=32
+EXPOSE 5000
 
 # Slurp application code
 ADD . /app

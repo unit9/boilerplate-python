@@ -1,16 +1,13 @@
-Flask-Migrate==1.8.0
-Flask-SQLAlchemy==2.1
-Flask-Script==2.0.5
-Flask==0.10.1
-Jinja2==2.8
-MarkupSafe==0.23
-PyYAML==3.11
-SQLAlchemy==1.0.12
-Werkzeug==0.11.5
-alembic==0.8.6
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-Script
+Flask
+Jinja2
+PyYAML
+SQLAlchemy
+alembic
 # https://github.com/evansd/whitenoise/pull/83
 git+git://github.com/bu2/whitenoise.git@0a8eb23860869ef8c244606cdd7112cc1aa6dcf5#egg=whitenoise
-itsdangerous==0.24
-psycopg2cffi==2.7.2
-raven[flask]==5.12.0
-user-agents==1.0.1
+psycopg2cffi
+raven[flask]
+user-agents
