@@ -1,4 +1,4 @@
-FROM unit9/web-py27:latest
+FROM unit9/web-py34:latest
 MAINTAINER ChangeMe <change.me@example.com>
 
 # Dependencies

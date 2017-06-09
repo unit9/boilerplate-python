@@ -6,8 +6,8 @@ from backend.tests.test_utils import app
 def test_response(app):
     response = app.get("/")
     assert_success(response)
-    assert "Hello" in response.data
-    assert "Unsupported" not in response.data
+    assert b"Hello" in response.data
+    assert b"Unsupported" not in response.data
 
 
 def test_unsupported(app):
@@ -16,8 +16,8 @@ def test_unsupported(app):
              "Version/7.0.6 Safari/537.78.2")
     response = app.get("/", headers={"user-agent": my_ua})
     assert_success(response)
-    assert "Hello" not in response.data
-    assert "Unsupported" in response.data
+    assert b"Hello" not in response.data
+    assert b"Unsupported" in response.data
 
 
 def test_response_404(app):

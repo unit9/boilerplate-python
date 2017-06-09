@@ -3,4 +3,4 @@ set -eu
 export DEBUG=1
 export SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI:-postgresql://postgres@localhost/local}
 ./cmd/db_create_tables
-python -m backend
+python3 -m backend

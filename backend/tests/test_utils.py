@@ -43,7 +43,7 @@ def db(request):
 
 def assert_success(response):
     __tracebackhide__ = True
-    if response.status_code not in xrange(200, 300):  # pragma: nocover
+    if response.status_code not in range(200, 300):  # pragma: nocover
         logging.debug("response status: %s", response.status)
         if response.mimetype == "application/json":
             logging.debug("response data: %r", json.loads(response.data))
@@ -54,5 +54,5 @@ def assert_success(response):
 
 def assert_client_failure(response):
     __tracebackhide__ = True
-    if response.status_code not in xrange(400, 500):  # pragma: nocover
+    if response.status_code not in range(400, 500):  # pragma: nocover
         pytest.fail("Response error code: {}".format(response.status))
