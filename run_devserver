@@ -2,5 +2,5 @@
 set -eu
 export DEBUG=1
 export SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI:-postgresql://postgres@localhost/local}
-./cmd/db_create_tables
-python3 -m backend
+export FLASK_APP=backend/__init__.py
+exec flask run
