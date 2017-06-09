@@ -1,22 +1,30 @@
-from unit9/base:latest
-maintainer Kamil Cholewiński <kamil.cholewinski@unit9.com>
+FROM unit9/web-py27:latest
+MAINTAINER ChangeMe <change.me@example.com>
 
 # Dependencies
-run apt-get update && \
+ADD requirements-lock.txt /app
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive \
     apt-get install --yes --no-install-recommends \
-            python-pip \
-            python-wheel \
-            uwsgi-plugin-python \
-    && rm -rf /var/cache/apt
-
-# Install app requirements
-workdir /app
-add requirements.txt /app
-run pip install -r ./requirements.txt
+        build-essential \
+        git \
+        libffi-dev \
+        libyaml-dev \
+        postgresql-common \
+        postgresql-server-dev-all \
+    && pip install -r ./requirements-lock.txt \
+    && apt-get remove --purge --yes build-essential \
+    && apt-get autoremove --yes --purge \
+    && rm -rf /var/cache/apt /root/.cache \
+    && pip list --outdated --format=columns
 
 # Configure and expose uWSGI
-run adduser --system --no-create-home --disabled-login --group app
-add config/run_production /etc/service/backend/run
+ENV PORT=5000 \
+    PYTHON_MODULE=backend \
+    PYTHON_CALLABLE=application \
+    UWSGI_PROCESSES=2 \
+    UWSGI_THREADS=32
+EXPOSE 5000
 
 # Slurp application code
-add . /app
+ADD . /app

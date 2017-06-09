@@ -37,7 +37,12 @@ For development:
 
 For development and production:
 
-    pip install -r requirements.txt
+    pip install -r requirements-lock.txt
+
+To update core dependencies:
+
+    pip install -U -r requirements.txt
+    pip freeze --local > requirements-lock.txt
 
 Apply `virtualenv`, various flags, etc as fit for your environment.
 
@@ -175,9 +180,10 @@ The included [`Dockerfile`](/Dockerfile), based on
 [`unit9/base`](https://hub.docker.com/r/unit9/base/), includes
 everything you need to get started.
 
-The script [`run_production`](/config/run_production) is copied into
-the image, and runs (via [runit](http://smarden.org/runit/)) a uWSGI
-master process with a bunch of workers, under an unprivileged account.
+The run-script for production server comes from the base image
+([`unit9/web-*`](https://github.com/unit9/docklabs/tree/master/web)),
+and runs (via [runit](http://smarden.org/runit/)) a uWSGI master
+process with a bunch of workers, under an unprivileged account.
 
 When using the bundled script and/or `Dockerfile`, you can override
 any of these environment variables:
