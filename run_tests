@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
-
+export TESTING=1
 PY_FILES=$(find . -type f -name "*.py")
 
-export SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI:-postgresql://postgres@localhost/test}
+export SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI:-}
 
 rm -rf ./shippable
 mkdir -p ./shippable/testresults ./shippable/codecoverage

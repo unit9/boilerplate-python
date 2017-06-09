@@ -5,9 +5,6 @@ python:
 
 build:
 
-  # pre_ci:
-  # - docker build -t myImage:tip .
-
   pre_ci_boot:
     image_name: drydock/u14pytall
     image_tag: prod
@@ -15,18 +12,13 @@ build:
     options: ""
 
   ci:
-  - ./cmd/provision_local
-
-  - ./run_tests
+  - docker build -t eu.gcr.io/u9docker/boilerplate .
+  - docker run --rm eu.gcr.io/u9docker/boilerplate ./run_tests
 
   # post_ci:
-  # - docker build -t eu.gcr.io/u9docker/boilerplate .
   # - docker push eu.gcr.io/u9docker/boilerplate
 
 # integrations:
 #   hub:
-#   - integrationName: u9docker
+#   - integrationName: u9spacedock
 #     type: gcr
-#     branches:
-#       only:
-#       - master
